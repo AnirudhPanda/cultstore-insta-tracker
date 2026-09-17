@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Cultstore Instagram Tracker</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <main class="shell">
+    <header class="topbar">
+      <div>
+        <p class="eyebrow">CULTSTORE / INSTAGRAM ANALYTICS</p>
+        <h1>14-day performance tracker</h1>
+        <p class="subhead">Add daily numbers once. Get clean trends, totals, and growth at a glance.</p>
+      </div>
+      <div class="actions">
+        <button id="loadSample" class="button secondary">Load sample</button>
+        <button id="exportCsv" class="button secondary">Export CSV</button>
+        <label class="button secondary file-button">Import CSV<input id="importCsv" type="file" accept=".csv,text/csv" /></label>
+        <button id="clearData" class="button danger">Clear</button>
+      </div>
+    </header>
+
+    <section class="controls card">
+      <div>
+        <label for="periodStart">Period start</label>
+        <input id="periodStart" type="date" />
+      </div>
+      <div class="hint">Use daily totals or daily changes consistently. The 7-day comparison uses the first 7 days versus the last 7 days.</div>
+      <div class="save-status" id="saveStatus">Saved in this browser</div>
+    </section>
+
+    <section id="kpis" class="kpi-grid"></section>
+
+    <section class="card table-card">
+      <div class="section-heading">
+        <div><p class="eyebrow">INPUT</p><h2>Daily metrics</h2></div>
+        <p class="muted">All fields are optional. Enter 0 when a metric was tracked but had no activity.</p>
+      </div>
+      <div class="table-wrap"><table id="dataTable"></table></div>
+    </section>
+
+    <section class="charts-grid">
+      <article class="card chart-card"><div class="section-heading"><div><p class="eyebrow">TREND</p><h2>Audience & discovery</h2></div></div><canvas id="audienceChart"></canvas><div class="legend"><span><i class="dot blue"></i>Viewers</span><span><i class="dot orange"></i>Followers</span><span><i class="dot green"></i>Net gain</span></div></article>
+      <article class="card chart-card"><div class="section-heading"><div><p class="eyebrow">TREND</p><h2>Engagement</h2></div></div><canvas id="engagementChart"></canvas><div class="legend"><span><i class="dot purple"></i>Interactions</span><span><i class="dot pink"></i>Likes</span><span><i class="dot teal"></i>Comments</span><span><i class="dot yellow"></i>Shares</span><span><i class="dot blue"></i>Saves</span></div></article>
+    </section>
+
+    <section class="card growth-card">
+      <div class="section-heading"><div><p class="eyebrow">COMPARISON</p><h2>First 7 days vs last 7 days</h2></div><p class="muted">Positive numbers are growth. A dash means there is no comparable data yet.</p></div>
+      <div id="growthGrid" class="growth-grid"></div>
+    </section>
+    <footer>Built for quick weekly Instagram reporting · Data stays on this device unless you export it.</footer>
+  </main>
+  <script src="app.js"></script>
+</body>
+</html>
