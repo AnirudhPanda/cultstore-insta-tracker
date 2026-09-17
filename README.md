@@ -2,6 +2,41 @@
 
 A lightweight, local-first dashboard for recording Instagram performance once every 14 days. It has no login or backend database: entries are saved automatically in the browser's local storage and can be backed up with CSV export.
 
+## Feature list
+
+### Reporting
+
+- Fortnightly workflow designed for one quick update every 14 days
+- Add, edit, and delete reporting periods
+- Required period start and end dates
+- Metrics for followers, net follower gain, interactions, viewers, profile visits, bio link taps, likes, comments, shares, and saves
+- Reflection notes for “What worked?” and “What could be better?”
+- A Reflection button in each history row for quick review
+
+### Dashboard and insights
+
+- Latest-period dashboard with KPI cards
+- Latest-versus-previous period comparison
+- Percentage growth calculated as `(latest - previous) / previous × 100`
+- Positive growth shown in green and negative growth shown in red
+- Safe handling for zero or unavailable previous values
+- Separate, readable trend charts for audience/discovery and engagement metrics
+- Chronological reporting history for easy month-to-month review
+
+### Data and usability
+
+- Automatic browser local storage
+- CSV import and export for backup and sharing
+- Sample data included for immediate preview
+- Responsive desktop and mobile layout
+- No login or complicated backend required
+
+### Deployment
+
+- Lightweight HTML, CSS, and JavaScript frontend
+- Node.js start command included
+- Railway-compatible server using the provided `PORT` and `0.0.0.0`
+
 ## Included
 
 - Add, edit, and delete fortnightly periods
