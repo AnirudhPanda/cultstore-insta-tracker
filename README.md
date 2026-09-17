@@ -1,6 +1,6 @@
 # Cultstore Instagram Fortnightly Tracker
 
-A lightweight, local-first dashboard for recording Instagram performance once every 14 days. It has no login or backend database: entries are saved automatically in the browser's local storage and can be backed up with CSV export.
+A lightweight shared dashboard for recording Instagram performance once every 14 days. Periods are saved by the Node server so everyone using the deployed link sees the same data. CSV export remains available as a backup.
 
 ## Feature list
 
@@ -25,7 +25,8 @@ A lightweight, local-first dashboard for recording Instagram performance once ev
 
 ### Data and usability
 
-- Automatic browser local storage
+- Shared server-side data storage for everyone using the live link
+- Local storage fallback when the app is offline
 - CSV import and export for backup and sharing
 - Sample data included for immediate preview
 - Responsive desktop and mobile layout
@@ -46,6 +47,7 @@ A lightweight, local-first dashboard for recording Instagram performance once ev
 - Sample data for an instant preview
 - Responsive layout for desktop and mobile
 - Railway-ready Node server using `PORT` and `0.0.0.0`
+- Shared API endpoints: `GET /api/periods` and `PUT /api/periods`
 
 ## Run locally
 
@@ -69,7 +71,7 @@ PORT=8080 npm start
 4. The server listens on Railway's supplied `PORT` and binds to `0.0.0.0`.
 5. Generate a public domain from the Railway service settings.
 
-No environment variables are required.
+No environment variables are required for the basic deployment. The included server stores shared data in `data/periods.json`; for production durability on Railway, attach a persistent volume or replace this file store with a managed database.
 
 ## CSV format
 
