@@ -3,55 +3,40 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Cultstore Instagram Tracker</title>
+  <meta name="theme-color" content="#f7f2eb" />
+  <title>Cultstore Instagram Fortnightly Tracker</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
-  <main class="shell">
+  <main class="app-shell">
     <header class="topbar">
-      <div>
-        <p class="eyebrow">CULTSTORE / INSTAGRAM ANALYTICS</p>
-        <h1>14-day performance tracker</h1>
-        <p class="subhead">Add daily numbers once. Get clean trends, totals, and growth at a glance.</p>
-      </div>
-      <div class="actions">
-        <button id="loadSample" class="button secondary">Load sample</button>
-        <button id="exportCsv" class="button secondary">Export CSV</button>
-        <label class="button secondary file-button">Import CSV<input id="importCsv" type="file" accept=".csv,text/csv" /></label>
-        <button id="clearData" class="button danger">Clear</button>
-      </div>
+      <a class="brand" href="#top" aria-label="Cultstore home"><span class="brand-mark">C</span><span>CULTSTORE</span></a>
+      <div class="top-actions"><button class="button button-ghost" id="loadSample">Load sample data</button><button class="button button-dark" id="openAdd">+ Add period</button><button class="icon-button" id="settingsButton" aria-label="Settings">•••</button></div>
     </header>
 
-    <section class="controls card">
-      <div>
-        <label for="periodStart">Period start</label>
-        <input id="periodStart" type="date" />
-      </div>
-      <div class="hint">Use daily totals or daily changes consistently. The 7-day comparison uses the first 7 days versus the last 7 days.</div>
-      <div class="save-status" id="saveStatus">Saved in this browser</div>
+    <section class="hero" id="top">
+      <div><p class="eyebrow">INSTAGRAM / FORTNIGHTLY</p><h1>Small check-ins.<br><em>Clear momentum.</em></h1><p class="hero-copy">A simple pulse check for Cultstore. Update your numbers once every 14 days and keep your growth story moving.</p></div>
+      <div class="hero-note"><span class="pulse"></span><div><strong>Keep it fortnightly</strong><p>No daily tracking needed.</p></div></div>
     </section>
 
-    <section id="kpis" class="kpi-grid"></section>
+    <section class="dashboard-head"><div><p class="eyebrow">LATEST SNAPSHOT</p><h2 id="latestTitle">No periods yet</h2><p class="muted" id="comparisonLabel">Add your first 14-day period to get started.</p></div><div class="data-actions"><button class="text-button" id="exportCsv">↓ Export CSV</button><label class="text-button upload-label">↑ Import CSV<input id="importCsv" type="file" accept=".csv,text/csv" /></label></div></section>
+    <section id="kpis" class="kpi-grid" aria-live="polite"></section>
 
-    <section class="card table-card">
-      <div class="section-heading">
-        <div><p class="eyebrow">INPUT</p><h2>Daily metrics</h2></div>
-        <p class="muted">All fields are optional. Enter 0 when a metric was tracked but had no activity.</p>
-      </div>
-      <div class="table-wrap"><table id="dataTable"></table></div>
+    <section class="content-grid">
+      <article class="card chart-card"><div class="section-top"><div><p class="eyebrow">AUDIENCE & DISCOVERY</p><h2>Reach is building</h2></div><span class="chart-unit">Across saved periods</span></div><canvas id="audienceChart" aria-label="Audience and discovery trends"></canvas><div class="legend"><span><i class="dot blue"></i>Viewers</span><span><i class="dot orange"></i>Followers</span><span><i class="dot green"></i>Net gain</span></div></article>
+      <article class="card chart-card"><div class="section-top"><div><p class="eyebrow">ENGAGEMENT</p><h2>The community is moving</h2></div><span class="chart-unit">Across saved periods</span></div><canvas id="engagementChart" aria-label="Engagement trends"></canvas><div class="legend"><span><i class="dot purple"></i>Interactions</span><span><i class="dot pink"></i>Likes</span><span><i class="dot teal"></i>Comments</span><span><i class="dot yellow"></i>Shares</span><span><i class="dot blue"></i>Saves</span></div></article>
     </section>
 
-    <section class="charts-grid">
-      <article class="card chart-card"><div class="section-heading"><div><p class="eyebrow">TREND</p><h2>Audience & discovery</h2></div></div><canvas id="audienceChart"></canvas><div class="legend"><span><i class="dot blue"></i>Viewers</span><span><i class="dot orange"></i>Followers</span><span><i class="dot green"></i>Net gain</span></div></article>
-      <article class="card chart-card"><div class="section-heading"><div><p class="eyebrow">TREND</p><h2>Engagement</h2></div></div><canvas id="engagementChart"></canvas><div class="legend"><span><i class="dot purple"></i>Interactions</span><span><i class="dot pink"></i>Likes</span><span><i class="dot teal"></i>Comments</span><span><i class="dot yellow"></i>Shares</span><span><i class="dot blue"></i>Saves</span></div></article>
-    </section>
+    <section class="card periods-card"><div class="section-top"><div><p class="eyebrow">REPORTING HISTORY</p><h2>Fortnightly periods</h2><p class="muted">One row per 14-day reporting period. Your data saves automatically.</p></div><button class="button button-orange" id="openAddBottom">+ Add period</button></div><div class="table-wrap"><table id="periodsTable"></table></div><div class="empty-state" id="emptyState" hidden><div class="empty-icon">✦</div><h3>Your first period starts here</h3><p>Add a start date, end date, and the numbers from Instagram Insights.</p><button class="button button-dark" id="openAddEmpty">Add your first period</button></div></section>
 
-    <section class="card growth-card">
-      <div class="section-heading"><div><p class="eyebrow">COMPARISON</p><h2>First 7 days vs last 7 days</h2></div><p class="muted">Positive numbers are growth. A dash means there is no comparable data yet.</p></div>
-      <div id="growthGrid" class="growth-grid"></div>
-    </section>
-    <footer>Built for quick weekly Instagram reporting · Data stays on this device unless you export it.</footer>
+    <footer><span>Made for the next great Cultstore drop.</span><span id="saveStatus">Saved in this browser</span></footer>
   </main>
+
+  <div class="modal-backdrop" id="modal" hidden><section class="modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle"><div class="modal-head"><div><p class="eyebrow">REPORTING PERIOD</p><h2 id="modalTitle">Add a fortnight</h2></div><button class="close-button" id="closeModal" aria-label="Close">×</button></div><form id="periodForm"><input type="hidden" id="editingId" /><div class="date-grid"><label>Period start<input required id="periodStart" type="date" /></label><label>Period end<input required id="periodEnd" type="date" /></label></div><div class="metric-section"><p class="field-heading">Audience & discovery</p><div class="form-grid" id="audienceFields"></div></div><div class="metric-section"><p class="field-heading">Engagement</p><div class="form-grid" id="engagementFields"></div></div><div class="modal-actions"><button type="button" class="button button-ghost" id="cancelModal">Cancel</button><button type="submit" class="button button-dark">Save period</button></div></form></section></div>
+
   <script src="app.js"></script>
 </body>
 </html>

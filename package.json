@@ -1,0 +1,8 @@
+{
+  "name": "cultstore-instagram-fortnightly-tracker",
+  "version": "1.0.0",
+  "private": true,
+  "description": "A lightweight fortnightly Instagram performance tracker for Cultstore.",
+  "scripts": { "start": "node server.js" },
+  "engines": { "node": ">=18" }
+}
