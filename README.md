@@ -28,7 +28,7 @@ A lightweight shared dashboard for recording Instagram performance once every 14
 - Shared server-side data storage for everyone using the live link
 - Local storage fallback when the app is offline
 - CSV import and export for backup and sharing
-- Sample data included for immediate preview
+- Empty state for a clean start with no fabricated performance data
 - Responsive desktop and mobile layout
 - No login or complicated backend required
 
@@ -44,7 +44,7 @@ A lightweight shared dashboard for recording Instagram performance once every 14
 - Latest-period KPI cards with latest-vs-previous percentage growth
 - Audience/discovery and engagement trend charts
 - CSV import/export
-- Sample data for an instant preview
+- Starts empty so only your real reporting periods appear
 - Responsive layout for desktop and mobile
 - Railway-ready Node server using `PORT` and `0.0.0.0`
 - Shared API endpoints: `GET /api/periods` and `PUT /api/periods`
